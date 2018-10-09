@@ -30,6 +30,12 @@ app.get('/', function(req, res) {
     res.status(200).sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/books', function(req, res) {
+});
+
+app.post('/add', function(req, res) {
+});
+
 app.listen(PORT, () => {
     console.log(`Server is up on port ${PORT}`);
 });
