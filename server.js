@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config();
 const express = require('express'),
     app = express(),
     bodyParser = require('body-parser').json(),
@@ -7,7 +8,6 @@ const express = require('express'),
     mySql = require('mysql'),
     PORT = process.env.PORT;
 
-require('dotenv').config();
 
 const conn = mySql.createConnection({
     host: process.env.DB_HOST,
@@ -26,14 +26,21 @@ conn.connect((err) => {
 
 app.use(bodyParser, express.static('assets'));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.status(200).sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/books', function(req, res) {
+app.get('/books', function (req, res) {
+    conn.query('SELECT * FROM books', (err, books) => {
+        if (err) {
+            console.log('Database error.');
+            return;
+        }
+        res.status(200).json(books);
+    });
 });
 
-app.post('/add', function(req, res) {
+app.post('/add', function (req, res) {
 });
 
 app.listen(PORT, () => {
