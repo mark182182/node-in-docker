@@ -8,7 +8,6 @@ const express = require('express'),
     mySql = require('mysql'),
     PORT = process.env.PORT;
 
-
 const conn = mySql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -41,6 +40,20 @@ app.get('/books', function (req, res) {
 });
 
 app.post('/add', function (req, res) {
+    const title = req.body.title,
+        author = req.body.author;
+    console.log(title, author);
+
+
+    conn.query('INSERT INTO books (title, author) VALUES (?, ?)', [title, author], (err) => {
+        if (err) {
+            console.log('Database error.');
+            return;
+        }
+        else {
+            console.log(`Inserted ${title}`);
+        }
+    });
 });
 
 app.listen(PORT, () => {
