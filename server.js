@@ -5,7 +5,7 @@ const express = require('express'),
 app = express(),
 bodyParser = require('body-parser').json(),
 path = require('path'),
-mySql = require('mysql'),
+mySql = require('mysql2'),
 PORT = process.env.PORT;
 
 const conn = mySql.createConnection({
