@@ -13,10 +13,10 @@ const conn = mySql.createConnection({
   user     : process.env.RDS_USERNAME,
   password : process.env.RDS_PASSWORD,
   database : process.env.RDS_DB_NAME,
-  port     : process.env.RDS_PORT
+  port     : process.env.database
 });
 
-console.log(process.env.RDS_HOSTNAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, process.env.RDS_DB_NAME, process.env.RDS_PORT);
+console.log(process.env.RDS_HOSTNAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, process.env.RDS_DB_NAME, process.env.database, process.env.RDS_PORT);
 
 conn.connect((err) => {
   if (err) {
