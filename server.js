@@ -16,6 +16,8 @@ const conn = mySql.createConnection({
   port     : process.env.RDS_PORT
 });
 
+console.log(process.env.RDS_HOSTNAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, process.env.RDS_DB_NAME, process.env.RDS_PORT);
+
 conn.connect((err) => {
   if (err) {
     console.log(err);
