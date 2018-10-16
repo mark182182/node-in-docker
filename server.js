@@ -12,11 +12,11 @@ const conn = mySql.createConnection({
   host     : process.env.RDS_HOSTNAME,
   user     : process.env.RDS_USERNAME,
   password : process.env.RDS_PASSWORD,
-  database : process.env.RDS_DB_NAME,
-  port     : process.env.database
+  database : process.env.EBS_DATABASE,
+  port     : process.env.RDS_PORT
 });
 
-console.log(process.env.RDS_HOSTNAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, process.env.RDS_DB_NAME, process.env.database, process.env.RDS_PORT);
+console.log(process.env.RDS_HOSTNAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, process.env.RDS_DB_NAME, process.env.EBS_DATABASE, process.env.RDS_PORT);
 
 conn.connect((err) => {
   if (err) {
